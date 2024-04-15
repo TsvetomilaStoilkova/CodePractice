@@ -8,8 +8,8 @@ Inside this repository, you'll discover:
 
 - **JavaScript Exercises:** Small coding challenges and exercises to sharpen my JavaScript skills.
 - **ReactJS Mini-Projects:** Simple ReactJS projects to reinforce my understanding of React concepts.
-- **HTML/CSS Demos:** Demonstrations of HTML and CSS techniques, including responsive design and layout tricks.
-- **Firebase Integration Examples:** Projects integrating Firebase for backend functionalities like authentication, database management, and hosting.
+- **HTML/CSS Demos:** Demonstrations of HTML and CSS techniques.
+- **Firebase Integration Examples:** Projects integrating Firebase for backend functionalities like authentication, database management.
 - **TypeScript Explorations:** Experimentations with TypeScript to familiarize myself with its syntax and features.
 
 Feel free to explore the folders and projects within this repository. Your feedback and suggestions are always welcome!
