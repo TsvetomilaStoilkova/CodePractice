@@ -17,38 +17,37 @@ const UserSelectModal = ({ isOpen, onRequestClose, users, selectedBook }) => {
             return { ...prevSelectedUsers, [user.uid]: user };
         });
     }
-// 
-const handleGiveBook = async (title, author, pages, publishedYear) => {
-    try {
-        const selectedUsersArray = Object.values(selectedUsers);
-        if (selectedUsersArray.length === 0) {
-            alert('Please select at least one user');
-            return;
-        }
 
-        const currentDate = new Date().toLocaleString();
-        const returnDate = new Date(currentDate);
-        returnDate.setDate(returnDate.getDate() + 7);
-
-        for (const user of selectedUsersArray) {
-            await giveBookToUser(
-                title,
-                author,
-                pages,
-                publishedYear,
-                user.uid,
-                currentDate,
-                returnDate
-            );
-        }
-
-        onRequestClose();
-    } catch (error) {
-        console.error('Error giving book to user:', error);
-        throw error;
-    }
-}
+    const handleGiveBook = async (title, author, pages, publishedYear) => {
+        try {
+            const selectedUsersArray = Object.values(selectedUsers);
+            if (selectedUsersArray.length === 0) {
+                alert('Please select at least one user');
+                return;
+            }
     
+            const currentDate = new Date().toISOString();
+            const returnDate = new Date(currentDate);
+            returnDate.setDate(returnDate.getDate() + 7);
+    
+            for (const user of selectedUsersArray) {
+                await giveBookToUser(
+                    title,
+                    author,
+                    pages,
+                    publishedYear,
+                    user.handle, 
+                    currentDate,
+                    user.handle 
+                );
+            }
+    
+            onRequestClose();
+        } catch (error) {
+            console.error('Error giving book to user:', error);
+            throw error;
+        }
+    }
 
     return (
         <Modal
@@ -59,19 +58,18 @@ const handleGiveBook = async (title, author, pages, publishedYear) => {
             <h1>Select User</h1>
             <input type="text" placeholder="Search" onChange={(e) => setSearch(e.target.value)} />
             <ul>
-                {Object.keys(users).map((userKey, index) => {
-                    const user = users[userKey];
-                    if (user.handle.toLowerCase().includes(search.toLowerCase())) {
-                        return (
-                            <li key={index} >
-                            
-                                {user.handle}
-                                <input type="checkbox" onChange={() => handleSelectUser(user)} />
-                            </li>
-                        );
-                    }
-                    return null;
-                })}
+            {Object.keys(users).map((userKey, index) => {
+    const user = users[userKey];
+    if (user && user.handle && user.handle.toLowerCase().includes(search.toLowerCase())) {
+        return (
+            <li key={index} >
+                {user.handle}
+                <input type="checkbox" onChange={() => handleSelectUser(user)} />
+            </li>
+        );
+    }
+    return null;
+})}
             </ul>
             <button onClick={onRequestClose}>Cancel</button>
             <button onClick={() => handleGiveBook(selectedBook.title, selectedBook.author, selectedBook.pages, selectedBook.publishedYear)}>Give Book</button>

@@ -20,7 +20,7 @@ export const getUserByUid = async (uid) => {
 export const updateUserByHandle = (handle, prop, value) => {
     return set(ref(db, `users/${handle}/${prop}`), value);
 };
-// тук да се добави графа за прочетени киги
+
 export const createUserHandle = (firstName, lastName, handle, uid, email) => {
     const userHandleRef = ref(db, `users/${handle}`);
     return get(userHandleRef).then((snapshot) => {
@@ -34,8 +34,8 @@ export const createUserHandle = (firstName, lastName, handle, uid, email) => {
                 uid,
                 email,
                 createdOn: new Date(),
-                booksToReturn: {}, // Обект за съхранение на взетите книги, които не са върнати,
-                readedBooks: {} // Обект за съхранение на прочетените книги
+                booksToReturn: {}, 
+                readedBooks: {} 
 
             };
             return set(userHandleRef, userObject);
@@ -69,7 +69,6 @@ export const getBooksDonatedByUser = async (currentUser) => {
 
         const books = await viewAllBooks();
         console.log(books)
-       // books is an object with book objects
         const donatedBooks = [];
         for (const book of Object.values(books)) {
             if (book.donatedBy === user.handle) {
@@ -92,3 +91,4 @@ export const getBooksReadByUser = async (currentUser) => {
     }
     return readBooks;
 }
+

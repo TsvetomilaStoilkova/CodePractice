@@ -19,7 +19,6 @@ const AllBooks = () => {
         const fetchBooks = async () => {
             const allBooks = await viewAllBooks();
             setBooks(allBooks);
-            console.log('allBooks', allBooks);
         }
         fetchBooks();
     }, []);
@@ -42,9 +41,9 @@ const AllBooks = () => {
         setModalIsOpen(false);
     }
 
-    const handleReturnBook = async (title) => {
+    const handleReturnBook = async (title, userHandle) => {
         try {
-            await returnBook(title);
+            await returnBook(title, userHandle); 
             const allBooks = await viewAllBooks();
             setBooks(allBooks);
         } catch (error) {
@@ -52,7 +51,6 @@ const AllBooks = () => {
             throw error;
         }
     }
-
   
 
     const filteredBooks = books ? Object.values(books).filter(book =>
@@ -71,7 +69,9 @@ const AllBooks = () => {
                 <p>No books found.</p>
             ) : (
                 <ul>
+                
                 {filteredBooks.map((book, index) => (
+                 
                     <li key={index}>
                         <h2>{book.title}</h2>
                         <p>Author: {book.author}</p>
@@ -80,8 +80,12 @@ const AllBooks = () => {
                         <p>Donated By: {book.donatedBy}</p>
                         <p>Donated On: {book.donatedOn}</p>
                         {isAdmin && book.taken && (
-                            <button onClick={() => handleReturnBook(book.title)}>The reader give it back</button>
-                        )}
+    <>
+        <p>Taken by: {book.takenBy}</p>
+        <p>Return by: {book.returnByDate}</p>
+        <button onClick={() => handleReturnBook(book.title)}>The reader give it back</button>
+    </>
+)}
                         {!isAdmin && book.taken && (
                         
                             <p>The book is already taken and should be returned by {book.returnByDate}</p>

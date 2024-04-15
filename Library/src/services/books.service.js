@@ -1,16 +1,14 @@
 import { get, set, ref, } from 'firebase/database';
 import { db } from '../config/firabase-config';
 import { getAuth } from 'firebase/auth';
-import {getUserByUid} from './users.service';
+import { getUserByUid } from './users.service';
 
-
-export const giveBookToUser = async (title, author, pages, publishedYear, takenBy, takenOn, uid) => {
+export const giveBookToUser = async (title, author, pages, publishedYear, takenBy, takenOn, userHandle) => {
     const returnDate = new Date(takenOn);
     returnDate.setDate(returnDate.getDate() + 7);
 
     try {
-
-        await set(ref(db, `users/${uid}/takenBooks/${title}`), {
+        await set(ref(db, `users/${userHandle}/booksToReturn/${title}`), {
             title,
             author,
             pages,
@@ -36,24 +34,52 @@ export const giveBookToUser = async (title, author, pages, publishedYear, takenB
     }
 }
 
-export const returnBook = async (title, uid) => {
+export const returnBook = async (title) => {
     try {
-        await set(ref(db, `users/${uid}/takenBooks/${title}`), null);
+        const snapshot = await get(ref(db, `takenBooks/${title}`));
+        const book = snapshot.val();
 
-        return set(ref(db, `takenBooks/${title}`), null);
+        if (!book) {
+            throw new Error(`Book with title ${title} not found in taken books`);
+        }
+
+        const userHandle = book.takenBy;
+        const userSnapshot = await get(ref(db, `users/${userHandle}`));
+        const user = userSnapshot.val();
+
+        if (!user) {
+            throw new Error(`User with handle ${userHandle} not found`);
+        }
+
+        await set(ref(db, `users/${userHandle}/readedBooks/${title}`), {
+            title,
+            author: book.author,
+            pages: book.pages,
+            publishedYear: book.publishedYear,
+            takenOn: book.takenOn,
+            returnByDate: book.returnedByDate,
+            returnedOnDate: new Date().toLocaleDateString(),
+        });
+
+        await set(ref(db, `users/${userHandle}/booksToReturn/${title}`), null);
+        await set(ref(db, `takenBooks/${title}`), null);
+
+        return true;
+
     } catch (error) {
         console.error('Error returning book:', error);
         throw error;
     }
 }
+
+
+
 export const viewAllBooks = async () => {
     try {
         const allBooksSnapshot = await get(ref(db, 'books'));
         const allBooks = allBooksSnapshot.val() || {};
-
         const takenBooksSnapshot = await get(ref(db, 'takenBooks'));
         const takenBooks = takenBooksSnapshot.val() || {};
-
         const booksWithAvailability = Object.keys(allBooks).map(title => {
             const taken = takenBooks.hasOwnProperty(title);
             if (taken) {
@@ -87,6 +113,7 @@ export const isBookTaken = async (title) => {
         throw error;
     }
 }
+
 export const viewBooksByAuthor = (author, uid) => {
     return get(ref(db, `books/${author}`));
 }
@@ -94,7 +121,6 @@ export const viewBooksByAuthor = (author, uid) => {
 export const deleteBook = (title, uid) => {
     return set(ref(db, `books/${title}`), null);
 }
-
 
 export const donateBookToLibrary = async (title, author, pages, publishedYear, donatedBy, donatedOn) => {
     const auth = getAuth();
@@ -106,8 +132,8 @@ export const donateBookToLibrary = async (title, author, pages, publishedYear, d
         author,
         pages,
         publishedYear,
-        donatedBy: userHandle, 
-        donatedOn: new Date().toLocaleString(),
+        donatedBy: userHandle,
+        donatedOn: new Date().toLocaleDateString(),
     });
 }
 
