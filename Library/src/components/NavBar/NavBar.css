@@ -1,0 +1,27 @@
+.App-NavBar {
+  padding: 0 10px 20px 10px;
+  border-color: hsl(220, 13%, 18%);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: white;
+  font-size: 1.2em;
+  height: 280px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  top: 0;
+  width: 100%;
+}
+
+.App-logo {
+  display: inline-block;
+  height: 240px;
+  border: 2px solid #282c34;
+  border-color: #282c34;
+  position: absolute;
+  top: 30px;
+  /* Adjust this value as needed */
+  left: 0;
+  right: 0;
+margin-left: auto;
+margin-right: auto;;
+}
