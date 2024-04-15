@@ -33,6 +33,6 @@ The primary goal of this project is to serve as an exercise for practicing JavaS
 
 To get started with Travel Art, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/TsvetomilaStoilkova/CodePractice/Library/main`
+1. Clone the repository: `git clone https://github.com/TsvetomilaStoilkova/CodePractice/tree/main/Library`
 2. Install the required dependencies: `npm install`
 3. Start the application: `npm start`
