@@ -11,8 +11,7 @@ Inside this repository, you'll discover:
 - **HTML/CSS Demos:** Demonstrations of HTML and CSS techniques.
 - **Firebase Integration Examples:** Projects integrating Firebase for backend functionalities like authentication, database management.
 - **TypeScript Explorations:** Experimentations with TypeScript to familiarize myself with its syntax and features.
-
-Feel free to explore the folders and projects within this repository. Your feedback and suggestions are always welcome!
+- **Online Tutorials:** Projects created following online tutorials to apply and practice learned concepts.
 
 ## How to Use?
 
@@ -20,6 +19,6 @@ If you're also learning front-end development or just curious about the projects
 
 ## Let's Connect!
 
-If you have any questions, suggestions, or just want to chat about web development, feel free to reach out to me. You can find me on [GitHub](https://github.com/TsvetomilaStoilkova) or [LinkedIn](https://linkedin.com/in/TsvetomilaStoilkova).
+If you have any questions, suggestions, or just want to chat about web development, feel free to reach out to me. You can find me on my email cvetomilazdravkova@gmail.com or [LinkedIn](https://www.linkedin.com/in/tsvetomila-stoilkova-8a092b167/).
 
 Happy coding!
