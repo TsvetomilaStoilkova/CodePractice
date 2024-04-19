@@ -1,11 +1,12 @@
 import { get, set, ref, } from 'firebase/database';
 import { db } from '../config/firabase-config';
 import { getAuth } from 'firebase/auth';
-import { getUserByUid } from './users.service';
+import { getUserByUid, getAllUsers } from './users.service';
 
 export const giveBookToUser = async (title, author, pages, publishedYear, takenBy, takenOn, userHandle) => {
     const returnDate = new Date(takenOn);
     returnDate.setDate(returnDate.getDate() + 7);
+    let takenOnDate = new Date(takenOn);
 
     try {
         await set(ref(db, `users/${userHandle}/booksToReturn/${title}`), {
@@ -13,7 +14,7 @@ export const giveBookToUser = async (title, author, pages, publishedYear, takenB
             author,
             pages,
             publishedYear,
-            takenOn,
+            takenOn: takenOnDate.toLocaleDateString(),
             returnByDate: returnDate.toLocaleDateString(),
         });
 
@@ -23,7 +24,7 @@ export const giveBookToUser = async (title, author, pages, publishedYear, takenB
             pages,
             publishedYear,
             takenBy,
-            takenOn,
+            takenOn: takenOnDate.toLocaleDateString(),
             returnedByDate: returnDate.toLocaleDateString(),
             returnedOnDate: null,
             returned: false,
@@ -134,6 +135,51 @@ export const donateBookToLibrary = async (title, author, pages, publishedYear, d
         publishedYear,
         donatedBy: userHandle,
         donatedOn: new Date().toLocaleDateString(),
+        takenBy: null,
+       returnByDate: null,
     });
 }
 
+export const getAllReadedBooks = async () => {
+    try {
+        const snapshot = await get(ref(db, 'readedBooks'));
+        return snapshot.val();
+    } catch (error) {
+        console.log(error.message);
+    }
+    return null;
+}
+
+export const getBooksReadedByUser = async (currentUser) => {
+    const users = await getAllUsers();
+    const userInfo = Object.values(users).find(user => user.uid === currentUser)
+   if (userInfo.readedBooks) {
+    return userInfo.readedBooks;
+   } else {
+       return {};
+   }
+  
+ 
+}
+export const getAllTakenBooks = async () => {
+    try {
+        const snapshot = await get(ref(db, 'takenBooks'));
+        return snapshot.val();
+    } catch (error) {
+        console.log(error.message);
+    }
+    return null;
+}
+
+export const getBooksTakenByUser = async (currentUser) => {
+    const users = await getAllUsers();
+    const user = Object.values(users).find(user => user.uid === currentUser.uid);
+    const books = await getAllTakenBooks();
+    const takenBooks = [];
+    for (const book of Object.values(books)) {
+        if (book.takenBy === user.handle) {
+            takenBooks.push(book);
+        }
+    }
+    return takenBooks;
+}

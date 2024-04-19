@@ -34,8 +34,8 @@ export const createUserHandle = (firstName, lastName, handle, uid, email) => {
                 uid,
                 email,
                 createdOn: new Date(),
-                booksToReturn: {}, 
-                readedBooks: {} 
+                booksToReturn: {},
+                readedBooks: {}
 
             };
             return set(userHandleRef, userObject);
@@ -64,31 +64,13 @@ export const getAllUsers = async () => {
 export const getBooksDonatedByUser = async (currentUser) => {
     const users = await getAllUsers();
     const user = Object.values(users).find(user => user.uid === currentUser.uid);
-    console.log(user.handle);
-    
-
-        const books = await viewAllBooks();
-        console.log(books)
-        const donatedBooks = [];
-        for (const book of Object.values(books)) {
-            if (book.donatedBy === user.handle) {
-                donatedBooks.push(book);
-            }
-        }
-        return donatedBooks;
-
-}
-
-export const getBooksReadByUser = async (currentUser) => {
-    const users = await getAllUsers();
-    const user = Object.values(users).find(user => user.uid === currentUser.uid);
     const books = await viewAllBooks();
-    const readBooks = [];
+    const donatedBooks = [];
     for (const book of Object.values(books)) {
-        if (book.takenBy === user.handle) {
-            readBooks.push(book);
+        if (book.donatedBy === user.handle) {
+            donatedBooks.push(book);
         }
     }
-    return readBooks;
-}
+    return donatedBooks;
 
+}

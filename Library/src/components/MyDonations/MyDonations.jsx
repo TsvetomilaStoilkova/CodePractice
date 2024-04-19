@@ -8,6 +8,7 @@ const MyDonations = () => {
     const [donatedBooks, setDonatedBooks] = useState([]);
     const [loading, setLoading] = useState(true);
     const currentUser = auth.currentUser;
+    
 
     useEffect(() => {
         if (currentUser) { 
@@ -33,7 +34,7 @@ const MyDonations = () => {
                     {donatedBooks.length === 0 ? 
                     <>
                     <p>No donations yet</p> 
-                    <p> You can make a donation here <Link to="/donate">Donate</Link></p>
+                    <p> You can make a donation here <Link to="/donateBook">Donate</Link></p>
                     </>
                      :
                     donatedBooks.map((book, index) => (

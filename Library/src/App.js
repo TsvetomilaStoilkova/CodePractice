@@ -6,6 +6,7 @@ import NavBar from './components/NavBar/NavBar';
 import DonateBook from './components/DonateBook/DonateBook';
 import AllBooks from './components/AllBooks/AllBooks';
 import MyDonations from './components/MyDonations/MyDonations';
+import MyBooks from './components/MyBooks/MyBooks';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/donateBook" element={<DonateBook />} />
           <Route path="/allBooks" element={<AllBooks />} />
           <Route path="/myDonations" element={<MyDonations />} />
+          <Route path="/myBooks" element={<MyBooks />} />
         </Routes>
       </Router>
     </div>

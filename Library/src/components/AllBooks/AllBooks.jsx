@@ -13,8 +13,6 @@ const AllBooks = () => {
     const [users, setUsers] = useState([]);
     const [isAdmin, setIsAdmin] = useState(false);
 
-    
-
     useEffect(() => {
         const fetchBooks = async () => {
             const allBooks = await viewAllBooks();
@@ -51,7 +49,7 @@ const AllBooks = () => {
             throw error;
         }
     }
-  
+
 
     const filteredBooks = books ? Object.values(books).filter(book =>
         book.title && book.author && (book.title.toLowerCase().includes(search.toLowerCase()) ||  book.author.toLowerCase().includes(search.toLowerCase()))
@@ -80,7 +78,7 @@ const AllBooks = () => {
                         <p>Donated By: {book.donatedBy}</p>
                         <p>Donated On: {book.donatedOn}</p>
                         {isAdmin && book.taken && (
-    <>
+   <>
         <p>Taken by: {book.takenBy}</p>
         <p>Return by: {book.returnByDate}</p>
         <button onClick={() => handleReturnBook(book.title)}>The reader give it back</button>
