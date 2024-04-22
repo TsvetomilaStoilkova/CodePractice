@@ -58,10 +58,10 @@ const SignUp = () => {
 
     return (
         <div>
-            <h1>Sign Up</h1>
-            <p>Sign up to create an account</p>
+            <h1>Регистрация</h1>
+            <p>Моля, попълни формата, за да се регистрираш в нашата библиотека</p>
             <form onSubmit={handleSubmit}>
-                <label>First Name</label>
+                <label>Име</label>
                 <input
                     type="text"
                     name="firstName"
@@ -69,7 +69,7 @@ const SignUp = () => {
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
                 />
-                <label>Last Name</label>
+                <label>Фамилия</label>
                 <input
                     type="text"
                     name="lastName"
@@ -77,7 +77,7 @@ const SignUp = () => {
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
                 />
-                <label>Username</label>
+                <label>Потребителско име</label>
                 <input
                     type="text"
                     name="username"
@@ -85,7 +85,7 @@ const SignUp = () => {
                     value={userName}
                     onChange={(e) => setUserName(e.target.value)}
                 />
-                <label>Email</label>
+                <label>Имейл</label>
                 <input
                     type="email"
                     name="email"
@@ -93,7 +93,7 @@ const SignUp = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
-                <label>Password</label>
+                <label>Парола</label>
                 <input
                     type="password"
                     name="password"
@@ -101,7 +101,7 @@ const SignUp = () => {
                     value={pass}
                     onChange={(e) => setPass(e.target.value)}
                 />
-                <button type="submit">Sign Up</button>
+                <button type="submit">Регистрация</button>
             </form>
         </div>
     )

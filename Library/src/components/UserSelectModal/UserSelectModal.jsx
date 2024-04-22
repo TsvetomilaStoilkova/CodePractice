@@ -4,25 +4,17 @@ import { giveBookToUser } from '../../services/books.service';
 import './UserSelectModal.css';
 
 const UserSelectModal = ({ isOpen, onRequestClose, users, selectedBook }) => {
-    const [selectedUsers, setSelectedUsers] = useState({});
+    const [selectedUser, setSelectedUser] = useState(null);
     const [search, setSearch] = useState('');
 
     const handleSelectUser = (user) => {
-        setSelectedUsers((prevSelectedUsers) => {
-            if (prevSelectedUsers[user.uid]) {
-                const newSelectedUsers = { ...prevSelectedUsers };
-                delete newSelectedUsers[user.uid];
-                return newSelectedUsers;
-            }
-            return { ...prevSelectedUsers, [user.uid]: user };
-        });
+        setSelectedUser(user);
     }
 
     const handleGiveBook = async (title, author, pages, publishedYear) => {
         try {
-            const selectedUsersArray = Object.values(selectedUsers);
-            if (selectedUsersArray.length === 0) {
-                alert('Please select at least one user');
+            if (!selectedUser) {
+                alert('Please select a user');
                 return;
             }
     
@@ -30,17 +22,15 @@ const UserSelectModal = ({ isOpen, onRequestClose, users, selectedBook }) => {
             const returnDate = new Date(currentDate);
             returnDate.setDate(returnDate.getDate() + 7);
     
-            for (const user of selectedUsersArray) {
-                await giveBookToUser(
-                    title,
-                    author,
-                    pages,
-                    publishedYear,
-                    user.handle, 
-                    currentDate,
-                    user.handle 
-                );
-            }
+            await giveBookToUser(
+                title,
+                author,
+                pages,
+                publishedYear,
+                selectedUser.handle, 
+                currentDate,
+                selectedUser.handle 
+            );
     
             onRequestClose();
         } catch (error) {
@@ -55,24 +45,30 @@ const UserSelectModal = ({ isOpen, onRequestClose, users, selectedBook }) => {
             onRequestClose={onRequestClose}
             className="userSelect-Modal"
         >
-            <h1>Select User</h1>
+            <h1>Читатели</h1>
             <input type="text" placeholder="Search" onChange={(e) => setSearch(e.target.value)} />
             <ul>
             {Object.keys(users).map((userKey, index) => {
-    const user = users[userKey];
-    if (user && user.handle && user.handle.toLowerCase().includes(search.toLowerCase())) {
-        return (
-            <li key={index} >
-                {user.handle}
-                <input type="checkbox" onChange={() => handleSelectUser(user)} />
-            </li>
-        );
-    }
-    return null;
-})}
+                const user = users[userKey];
+                if (user && user.handle && user.handle.toLowerCase().includes(search.toLowerCase())) {
+                    return (
+                        <li key={index}>
+                            {user.handle}
+                            <input
+                                type="radio"
+                                name="user"
+                                value={user.handle}
+                                checked={selectedUser && selectedUser.handle === user.handle}
+                                onChange={() => handleSelectUser(user)}
+                            />
+                        </li>
+                    );
+                }
+                return null;
+            })}
             </ul>
-            <button onClick={onRequestClose}>Cancel</button>
-            <button onClick={() => handleGiveBook(selectedBook.title, selectedBook.author, selectedBook.pages, selectedBook.publishedYear)}>Give Book</button>
+            <button onClick={onRequestClose}>Затвори</button>
+            <button onClick={() => handleGiveBook(selectedBook.title, selectedBook.author, selectedBook.pages, selectedBook.publishedYear)}>Даване на чител</button>
         </Modal>
     );
 }

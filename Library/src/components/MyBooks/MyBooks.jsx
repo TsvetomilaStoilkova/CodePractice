@@ -50,34 +50,33 @@ const MyBooks = () => {
 
   return (
     <div>
-      <h1>My Books</h1>
+      <h1>Моите книги</h1>
       {loading ? <p>Loading...</p> : (
         <div>
-          <h2>Books to return</h2>
-          {booksToReturn.length === 0 ? <p>No books to return</p> :
+          <h2>Какво чета в момента?</h2>
+          {booksToReturn.length === 0 ? <p> В момента не чета нищо от библиотеката. Няма книги, които да трябва да бъдат върнати.</p> :
 <ul>
   {booksToReturn.map((book, index) => (
     <li key={index}>
       <h3>{book.title}</h3>
-      <p>Author: {book.author}</p>
-      <p>Pages: {book.pages}</p>
-      <p>Published Year: {book.publishedYear}</p>
-      <p>Taken on: {book.takenOn}</p>
-      <p>Return by: {book.returnedByDate}</p>
+      <p>Автор: {book.author}</p>
+      <p>Страници: {book.pages}</p>
+      <p>Година на издаване: {book.publishedYear}</p>
+      <p>Взета от: {book.takenOn}</p>
+      <p>Трябва да бъде върната до: {book.returnedByDate}</p>
     </li>
   ))}
 </ul>}
-          <h2>Readed Books</h2>
-          {readedBooks.length === 0 ? <p>No readed books</p> :
+          <h2>Прочетени книги</h2>
+          {readedBooks.length === 0 ? <p>Все още не съм чел нищо от тук. </p> :
             <ul>
               {readedBooks.map((book, index) => (
                 <li key={index}>
                   <h3>{book.title}</h3>
-                  <p>Author: {book.author}</p>
-                  <p>Pages: {book.pages}</p>
-                  <p>Published Year: {book.publishedYear}</p>
-                  <p>Taken on: {book.takenOn}</p>
-                  <p>Returned on: {book.returnedOnDate}</p>
+                  <p>Автор: {book.author}</p>
+                  <p>Страници: {book.pages}</p>
+                  <p>Година на издаване: {book.publishedYear}</p>
+                  <p>Върната на: {book.returnedOnDate}</p>
                 </li>
               ))}
             </ul>

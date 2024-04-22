@@ -7,6 +7,7 @@ import DonateBook from './components/DonateBook/DonateBook';
 import AllBooks from './components/AllBooks/AllBooks';
 import MyDonations from './components/MyDonations/MyDonations';
 import MyBooks from './components/MyBooks/MyBooks';
+import AllTakenBooks from './components/AllTakenBooks/AllTakenBooks';
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
           <Route path="/allBooks" element={<AllBooks />} />
           <Route path="/myDonations" element={<MyDonations />} />
           <Route path="/myBooks" element={<MyBooks />} />
+          <Route path="/allTakenBooks" element={<AllTakenBooks />} />
         </Routes>
       </Router>
     </div>

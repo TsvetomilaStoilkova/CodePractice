@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import logo from "../../images/logo.png";
 import MyProfile from '../MyProfile/MyProfile';
+import Home from '../../pages/Home/Home';
 import {auth} from '../../config/firabase-config';
 import "./NavBar.css";
 
@@ -24,10 +25,13 @@ const NavBar = () => {
                   <img src={logo} className="App-logo" alt="logo" />
                 </Link>
                 <button>
-                  <Link to="/donateBook">Donate Book</Link>
+                  <Link to="/">Начало</Link>
                 </button>
                 <button>
-                  <Link to="/allBooks">All Books</Link>
+                  <Link to="/donateBook">Дари книга</Link>
+                </button>
+                <button>
+                  <Link to="/allBooks">Всички книги</Link>
                 </button>
                 {currentUser && <MyProfile />}
               </header>

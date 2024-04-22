@@ -27,11 +27,12 @@ const MyProfile = () => {
 
   return (
     <div>
-      <button onClick={toggleOpen}>{userData} Profile</button>
+      <button onClick={toggleOpen}>{userData}</button>
       {isOpen && (
         <ul>
-          <li><Link to="/myBooks">My books</Link></li>
-          <li><Link to="/myDonations">My donations</Link></li>
+          <li><Link to="/myBooks">Моите книги</Link></li>
+          <li><Link to="/myDonations">Дарения</Link></li>
+          <li><Link to="/allTakenBooks">Всички взети книги</Link></li>
           <li> <LogOut /> </li>
         </ul>
       )}

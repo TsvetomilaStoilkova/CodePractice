@@ -39,26 +39,26 @@ const DonateBook = () => {
     return (
         <div>
             <form className="donateBook-Form" onSubmit={handleSubmit}>
-                <h1>Donate Book</h1>
-                <p>Fill in the details of the book you would like to donate.</p>
-<label> Title</label>
-                <input type="text" name="title" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} />
+                <h1>Дари книга</h1>
+                <p>Моля въведете необходимата информация за книгата, която желаете да дарите:</p>
+<label> Заглавие на книгата</label>
+                <input type="text" name="title" placeholder="Заглавие" value={title} onChange={(e) => setTitle(e.target.value)} />
                 <br />
-                <label> Author</label>
-                <input type="text" name="author" placeholder="Author" value={author} onChange={(e) => setAuthor(e.target.value)} />
+                <label> Автор </label>
+                <input type="text" name="author" placeholder="Автор" value={author} onChange={(e) => setAuthor(e.target.value)} />
                 <br />
-               <label> Pages</label>
-                <input type="number" name="pages" placeholder="Pages" value={pages} onChange={(e) => setPages(e.target.value)} />
+               <label> Страници </label>
+                <input type="number" name="pages" placeholder="Страници" value={pages} onChange={(e) => setPages(e.target.value)} />
                 <br />
-                <label> Published Year</label>
-                <input type="number" name="publishedYear" placeholder="Published Year" value={publishedYear} onChange={(e) => setPublishedYear(e.target.value)} />
+                <label> Година на издаване </label>
+                <input type="number" name="publishedYear" placeholder="Година на издаване" value={publishedYear} onChange={(e) => setPublishedYear(e.target.value)} />
                 <br />
                 
                 
-    <button type="submit">Donate Book</button>
+    <button type="submit">Дари!</button>
 
 
-                <p>Thank you for you generosity, we will waiting for you to bring the book in the library within 7 days!</p>
+                <p>Благодарим Ви за щедростта! Очакваме да донесете книгата на място в библиотеката през следващите 7 дни. </p>
             </form>
         </div>
     )

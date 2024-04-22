@@ -22,15 +22,15 @@ const SignIn = ({ onLogin }) => {
                 const password = e.target.password.value;
                 handleLogin(email, password);
             }}>
-                <label>Insert your email</label>
+                <label>Имейл</label>
                 <br />
                 <input type="text" name="email" placeholder="Email" />
                 <br />
-                <label>Insert your password</label>
+                <label>Парола</label>
                 <br />
                 <input type="password" name="password" placeholder="Password" />
                <br />
-                <button type="submit">Sign In</button>
+                <button type="submit">Вход</button>
             </form>
         </div>
     )
