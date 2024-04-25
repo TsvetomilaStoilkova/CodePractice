@@ -6,7 +6,7 @@ import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAkloqlgBLVphb2eqbo1COkT5KScHPGDSU",
-  authDomain: "the-book-thief-7ad8d.firebaseapp.com",
+  authDomain: "the-book-thief-7ad8d.firebaseapp.com", 
   projectId: "the-book-thief-7ad8d",
   storageBucket: "the-book-thief-7ad8d.appspot.com",
   messagingSenderId: "715778696545",

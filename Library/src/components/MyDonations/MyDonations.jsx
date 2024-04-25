@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import {getBooksDonatedByUser} from '../../services/users.service';
-import { auth } from "../../config/firabase-config";
+import { auth } from "../../config/firebase-config";
 import './MyDonations.css';
 
 const MyDonations = () => {

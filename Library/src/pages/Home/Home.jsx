@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { loginUser} from '../../services/auth.service';
-import {auth} from '../../config/firabase-config';
+import {auth} from '../../config/firebase-config';
 import SignIn from '../../components/SignIn/SignIn';
 
 

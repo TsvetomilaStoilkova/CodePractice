@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import logo from "../../images/logo.png";
 import MyProfile from '../MyProfile/MyProfile';
 import Home from '../../pages/Home/Home';
-import {auth} from '../../config/firabase-config';
+import {auth} from '../../config/firebase-config';
 import "./NavBar.css";
 
 

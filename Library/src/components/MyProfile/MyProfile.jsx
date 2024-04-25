@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { auth } from "../../config/firabase-config";
+import { auth } from "../../config/firebase-config";
 import {getUserByUid} from '../../services/users.service';
 import LogOut from "../LogOut/LogOut";
 import './MyProfile.css';

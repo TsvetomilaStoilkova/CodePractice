@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { viewAllBooks} from "../../services/books.service";
 import UserSelectModal from "../UserSelectModal/UserSelectModal";
-import { auth } from "../../config/firabase-config";
+import { auth } from "../../config/firebase-config";
 import { getAllUsers } from '../../services/users.service';
 
 

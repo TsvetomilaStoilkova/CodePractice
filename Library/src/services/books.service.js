@@ -1,5 +1,5 @@
 import { get, set, ref, } from 'firebase/database';
-import { db } from '../config/firabase-config';
+import { db } from '../config/firebase-config';
 import { getAuth } from 'firebase/auth';
 import { getUserByUid, getAllUsers } from './users.service';
 
