@@ -1,8 +1,8 @@
 import {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
-import {getBooksDonatedByUser} from '../../services/users.service';
-import { auth } from "../../config/firebase-config";
-import './MyDonations.css';
+import {getBooksDonatedByUser} from '../services/users.service';
+import { auth } from "../config/firebase-config";
+
 
 const MyDonations = () => {
     const [donatedBooks, setDonatedBooks] = useState([]);

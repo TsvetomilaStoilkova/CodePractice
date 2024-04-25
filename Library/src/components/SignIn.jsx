@@ -1,6 +1,6 @@
 import React from 'react';
-import { loginUser } from '../../services/auth.service';
-import './SignIn.css';
+import { loginUser } from '../services/auth.service';
+
 
 
 const SignIn = ({ onLogin }) => {

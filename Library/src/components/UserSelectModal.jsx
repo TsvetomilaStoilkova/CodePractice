@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Modal from 'react-modal';
-import { giveBookToUser } from '../../services/books.service';
-import './UserSelectModal.css';
+import { giveBookToUser } from '../services/books.service';
+
 
 const UserSelectModal = ({ isOpen, onRequestClose, users, selectedBook }) => {
     const [selectedUser, setSelectedUser] = useState(null);

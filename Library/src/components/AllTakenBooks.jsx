@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getAllTakenBooks, returnBook } from '../../services/books.service';
+import { getAllTakenBooks, returnBook } from '../services/books.service';
 
 
 const AllTakenBooks = () => {

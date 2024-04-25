@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { auth } from "../../config/firebase-config";
-import {getUserByUid} from '../../services/users.service';
-import LogOut from "../LogOut/LogOut";
-import './MyProfile.css';
+import { auth } from "../config/firebase-config";
+import {getUserByUid} from '../services/users.service';
+import LogOut from "../components/LogOut";
+
 
 const MyProfile = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,7 +30,7 @@ const MyProfile = () => {
       <button onClick={toggleOpen}>{userData}</button>
       {isOpen && (
         <ul>
-          <li><Link to="/myBooks">Моите книги</Link></li>
+          <li class='text-green-400'><Link to="/myBooks">Моите книги</Link></li>
           <li><Link to="/myDonations">Дарения</Link></li>
           <li><Link to="/allTakenBooks">Всички взети книги</Link></li>
           <li> <LogOut /> </li>

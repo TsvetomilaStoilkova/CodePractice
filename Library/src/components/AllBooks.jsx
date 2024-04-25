@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { viewAllBooks} from "../../services/books.service";
-import UserSelectModal from "../UserSelectModal/UserSelectModal";
-import { auth } from "../../config/firebase-config";
-import { getAllUsers } from '../../services/users.service';
+import { viewAllBooks} from "../services/books.service";
+import UserSelectModal from "../components/UserSelectModal";
+import { auth } from "../config/firebase-config";
+import { getAllUsers } from '../services/users.service';
 
 
 const AllBooks = () => {
@@ -47,7 +47,7 @@ const AllBooks = () => {
 
 
     return (
-        <div>
+        <div class="text-green-500">
             <h1>Всички книги</h1>
             <p>Списък с всички заглавия</p>
             <input type="text" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)} />

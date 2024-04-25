@@ -1,6 +1,6 @@
-import {logoutUser} from '../../services/auth.service';
+import {logoutUser} from '../services/auth.service';
 import {useNavigate} from 'react-router-dom';
-import './LogOut.css';
+
 
 
 const LogOut = () => {

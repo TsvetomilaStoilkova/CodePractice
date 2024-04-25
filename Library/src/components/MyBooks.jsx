@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { getBooksTakenByUser, getBooksReadedByUser } from "../../services/books.service";
-import { auth } from "../../config/firebase-config"
+import { getBooksTakenByUser, getBooksReadedByUser } from "../services/books.service";
+import { auth } from "../config/firebase-config"
 
 
 const MyBooks = () => {

@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import logo from "../../images/logo.png";
-import MyProfile from '../MyProfile/MyProfile';
-import Home from '../../pages/Home/Home';
-import {auth} from '../../config/firebase-config';
-import "./NavBar.css";
+import logo from "../images/logo.png";
+import MyProfile from '../components/MyProfile';
+import {auth} from '../config/firebase-config';
+
 
 
 const NavBar = () => {
