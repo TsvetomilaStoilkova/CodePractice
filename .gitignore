@@ -130,3 +130,4 @@ dist
 .pnp.*
 
 .DS_Store
+Library/src/config/firebase-config.js
