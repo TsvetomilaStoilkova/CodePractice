@@ -7,35 +7,70 @@ import {auth} from '../config/firebase-config';
 
 
 const NavBar = () => {
-    const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    useEffect(() => {
-        const unsubscribe = auth.onAuthStateChanged(user => {
+  useEffect(() => {
+      const unsubscribe = auth.onAuthStateChanged(user => {
           setCurrentUser(user);
-        });
-        return () => unsubscribe();
-      }, []);
+      });
+      return () => unsubscribe();
+  }, []);
 
+      const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    }
 
+    
         return (
-            <div className="App-NavBar">
-              <header>
-                <Link to="/">
-                  <img src={logo} className="App-logo" alt="logo" />
-                </Link>
-                <button>
-                  <Link to="/">Начало</Link>
-                </button>
-                <button>
-                  <Link to="/donateBook">Дари книга</Link>
-                </button>
-                <button>
-                  <Link to="/allBooks">Всички книги</Link>
-                </button>
-                {currentUser && <MyProfile />}
+          <div className="bg-gray-800 text-white">
+              <header className="container mx-auto flex items-center justify-between py-4">
+                  <nav>
+                      <ul className="flex space-x-4">
+                          <li>
+                              <Link to="/" className="nav-link hover:underline">Начало</Link>
+                          </li>
+                          <li>
+                              <Link to="/donateBook" className="nav-link hover:underline">Дари книга</Link>
+                          </li>
+                          <li>
+                              <Link to="/allBooks" className="nav-link hover:underline">Всички книги</Link>
+                          </li>
+                      </ul>
+                  </nav>
+                  <Link to="/" className="flex items-center">
+                      <img src={logo} className="h-10 md:h-auto w-auto mr-2 rounded-full" alt="logo" style={{ maxWidth: "150px" }} />
+                  </Link>
+                  <div className="md:hidden">
+                      <button onClick={toggleMenu} className="focus:outline-none">
+                          <svg className="h-6 w-6 fill-current" viewBox="0 0 24 24">
+                              <path
+                                  d="M4 6h16M4 12h16M4 18h16"
+                              />
+                          </svg>
+                      </button>
+                  </div>
+                  {isMenuOpen && (
+                      <div className="md:hidden absolute top-full left-0 bg-gray-800 w-full">
+                          <ul className="flex flex-col space-y-2 p-4">
+                              <li>
+                                  <Link to="/" className="nav-link hover:underline">Начало</Link>
+                              </li>
+                              <li>
+                                  <Link to="/donateBook" className="nav-link hover:underline">Дари книга</Link>
+                              </li>
+                              <li>
+                                  <Link to="/allBooks" className="nav-link hover:underline">Всички книги</Link>
+                              </li>
+                          </ul>
+                      </div>
+                  )}
+                  <div className="hidden md:block">
+                      {currentUser && <MyProfile />}
+                  </div>
               </header>
-            </div>
-          );
+          </div>
+      );
 }
 
 export default NavBar;

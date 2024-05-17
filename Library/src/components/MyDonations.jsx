@@ -27,26 +27,27 @@ const MyDonations = () => {
     }, [currentUser]);
 
     return (
-        <div>
-            <h1>My Donations</h1>
+        <div className="container mx-auto py-8">
+            <h1 className="text-3xl font-bold mb-4">Моите дарения</h1>
             {loading ? <p>Loading...</p> : (
                 <ul>
                     {donatedBooks.length === 0 ? 
-                    <>
-                    <p>No donations yet</p> 
-                    <p> You can make a donation here <Link to="/donateBook">Donate</Link></p>
-                    </>
-                     :
-                    donatedBooks.map((book, index) => (
-                        <li key={index}>
-                            <h2>{book.title}</h2>
-                            <p>Author: {book.author}</p>
-                            <p>Pages: {book.pages}</p>
-                            <p>Published Year: {book.publishedYear}</p>
-                            <p>Donated By: {book.donatedBy}</p>
-                            <p>Donated On: {book.donatedOn}</p>
-                        </li>
-                    ))}
+                        <>
+                            <p>Все още нямате дарени книги</p> 
+                            <p>Можете да направите дарение <Link to="/donateBook">тук</Link></p>
+                        </>
+                        :
+                        donatedBooks.map((book, index) => (
+                            <li key={index} className="mb-8 p-4 bg-gray-100 rounded-lg">
+                                <h2 className="text-xl font-bold mb-2">{book.title}</h2>
+                                <p>Автор: {book.author}</p>
+                                <p>Страници: {book.pages}</p>
+                                <p>Година на издаване: {book.publishedYear}</p>
+                                <p>Дарена от: {book.donatedBy}</p>
+                                <p>Дарена на: {book.donatedOn}</p>
+                            </li>
+                        ))
+                    }
                 </ul>
             )}
         </div>
