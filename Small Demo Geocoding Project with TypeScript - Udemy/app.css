@@ -1,0 +1,54 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f8ff;
+    color: #333;
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  #map {
+    width: 90%;
+    margin: 2rem auto;
+    padding: 1rem;
+    border: 2px solid #00aaff;
+    border-radius: 10px;
+    background-color: #e0f7fa;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  #mapContainer {
+    width: 90%;
+    height: 400px;
+    margin: 2rem auto;
+    border: 2px solid #00aaff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  form {
+    margin: 2rem auto;
+  }
+  
+  form input[type="text"] {
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+    border: 2px solid #00796b;
+    border-radius: 5px;
+    width: 200px;
+    font-size: 1rem;
+  }
+  
+  form button {
+    padding: 0.5rem 1rem;
+    background-color: #00aaff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  form button:hover {
+    background-color: #00796b;
+  }
