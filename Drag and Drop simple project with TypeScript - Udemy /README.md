@@ -14,11 +14,10 @@ This project is a small demonstration of drag and drop functionality implemented
 3. CSS
 
 ## Usage
-To use this project, simply clone the repository and open the index.html file in a web browser.
-
-## Future Improvements
-Refactoring for better readability and maintainability.
-
+To set up this project locally, follow these steps:
+1. Clone this repository
+2. Install dependencies: npm install
+3. Start the development server: npm start
 
 ## Credits
 This project was created as part of the "Understanding TypeScript" course on Udemy.
